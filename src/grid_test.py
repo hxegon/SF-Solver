@@ -1,7 +1,7 @@
 import unittest
 from grid import Grid
 
-class GridTests(unittest.TestCase):
+class NodeTests(unittest.TestCase):
 
     def testSetsNodeAttributes(self):
         # not attributes in the networkx sense, just in the sense that the node object itself can store a value.
@@ -22,4 +22,6 @@ class GridTests(unittest.TestCase):
     def testHasAppropriateNumberOfNodes(self):
         self.assertEqual(len(self.g.nodes()), 16)
 
-    #def testForGridStyleEdges(self):
+#class EdgeTests(unittest.TestCase):
+
+    #def testMakesCorrectEdges(self):
