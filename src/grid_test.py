@@ -10,14 +10,9 @@ class NodeTests(unittest.TestCase):
         self.g = Grid(test_attrs)
         self.assertEqual(sorted(self.g.nodes()), should_be)
 
-    #def testRejectsWrongLengthAttributes(self):
-
     def setUp(self):
         test_attrs = [ x for x in range(0, 16) ] # 0 - 15
         self.g = Grid(test_attrs)
-
-    def testDefaultSizeIs4x4(self):
-        self.assertEqual(self.g.SIZE, (4, 4))
 
     def testHasAppropriateNumberOfNodes(self):
         self.assertEqual(len(self.g.nodes()), 16)
