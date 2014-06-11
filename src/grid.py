@@ -5,7 +5,10 @@ import networkx as nx
 class Grid(nx.DiGraph):
   """
   Wraps nx.DiGraph
-  Handles initializing nodes, values and edges in 4x4 grid manner.
+  Initializes:
+  [x] Nodes
+  [x] Values
+  [ ] Edges
   """
 
   def __init__(self, attributes):
