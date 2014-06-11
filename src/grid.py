@@ -5,7 +5,7 @@ import networkx as nx
 class Grid(nx.DiGraph):
     # responsible for making a graph in the structure of a grid and filling it with values, but not enforcing rules.
 
-    def __init__(self):
+    def __init__(self, attributes):
         """
         1. Checks input
         2. Makes Graph from input
@@ -14,5 +14,4 @@ class Grid(nx.DiGraph):
         super().__init__(self)
 
         # Is it ok to just have 1-16 nodes or are coords needed?
-        for i in range (0, self.SIZE[0] * self.SIZE[1]):
-            self.add_node(i)
+        self.add_nodes_from(zip([x for x in range(0, 16)], attributes))
