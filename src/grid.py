@@ -12,5 +12,5 @@ class Grid(nx.DiGraph):
     self.SIZE = (4, 4) # could be any size but doesn't need to
     super().__init__(self)
 
-    # Is it ok to just have 1-16 nodes or are coords needed?
-    self.add_nodes_from(zip([x for x in range(0, 16)], attributes))
+    for i in range(0, self.SIZE[0] * self.SIZE[1]):
+      self.add_node(i, value=attributes[i])

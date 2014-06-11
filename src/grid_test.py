@@ -4,11 +4,10 @@ from grid import Grid
 class NodeTests(unittest.TestCase):
 
     def testSetsNodeAttributes(self):
-        # not attributes in the networkx sense, just in the sense that the node object itself can store a value.
         test_attrs = [ x for x in range(0, 16) ] # 0 - 15
-        should_be = list(zip(test_attrs, test_attrs))
         self.g = Grid(test_attrs)
-        self.assertEqual(sorted(self.g.nodes()), should_be)
+        for x in range(0, 16):
+            self.assertEqual(self.g.node[x]['value'], x)
 
     def setUp(self):
         test_attrs = [ x for x in range(0, 16) ] # 0 - 15
