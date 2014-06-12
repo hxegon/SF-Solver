@@ -15,9 +15,11 @@ class NodeTests(unittest.TestCase):
         self.assertEqual(len(self.g.nodes()), 16)
 
     def testGetCandidateNeghborsFor(self):
-        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((0,1))['adjacent']), [(0,0), (0,2), (1,1)])
-        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((0,1))['diagonal']), [(1,0), (1,2)])
+        fixture = self.g.get_candidate_neighbors_for((0,1))
+        self.assertEqual(sorted(fixture['adjacent']), [(0,0), (0,2), (1,1)])
+        self.assertEqual(sorted(fixture['diagonal']), [(1,0), (1,2)])
 
-        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((3,3))['adjacent']), [(2,3), (3,2)])
-        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((3,3))['diagonal']), [(2,2)])
+        fixture = self.g.get_candidate_neighbors_for((3,3))
+        self.assertEqual(sorted(fixture['adjacent']), [(2,3), (3,2)])
+        self.assertEqual(sorted(fixture['diagonal']), [(2,2)])
 
