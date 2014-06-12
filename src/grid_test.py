@@ -14,6 +14,10 @@ class NodeTests(unittest.TestCase):
     def testHasAppropriateNumberOfNodes(self):
         self.assertEqual(len(self.g.nodes()), 16)
 
-#class EdgeTests(unittest.TestCase):
+    def testGetCandidateNeghborsFor(self):
+        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((0,1))['adjacent']), [(0,0), (0,2), (1,1)])
+        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((0,1))['diagonal']), [(1,0), (1,2)])
 
-    #def testMakesCorrectEdges(self):
+        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((3,3))['adjacent']), [(2,3), (3,2)])
+        self.assertEqual(sorted(self.g.get_candidate_neighbors_for((3,3))['diagonal']), [(2,2)])
+
