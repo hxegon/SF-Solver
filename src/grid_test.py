@@ -5,8 +5,8 @@ class NodeTests(unittest.TestCase):
 
     def testSetsNodeAttributes(self):
         self.g = Grid([ x for x in range(0, 16) ])
-        for x in range(0, 16):
-            self.assertEqual(self.g.node[x]['value'], x)
+        for x, y in zip(sorted(self.g.nodes()), range(0, 16)):
+            self.assertEqual(self.g.node[x]['value'], y)
 
     def setUp(self):
         self.g = Grid([ x for x in range(0, 16) ])
