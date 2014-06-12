@@ -9,7 +9,7 @@ class Grid(nx.DiGraph):
   Initializes:
   [x] Nodes
   [x] Values
-  [ ] Edges
+  [x] Edges
   """
 
   def __init__(self, attributes):
@@ -25,8 +25,21 @@ class Grid(nx.DiGraph):
     for node, val in zip(sorted(self.nodes()), attributes):
       self.node[node]['value'] = val
 
-  def get_candidate_neighbors_for(self, node):
-    x, y = node[0], node[1] 
-    adjacent = [ x for x in [(x+1, y), (x-1, y), (x, y+1), (x, y-1)] if x in self.nodes() ]
-    diagonal = [ x for x in [(x+1, y+1), (x-1, y-1), (x-1, y+1), (x+1, y-1)] if x in self.nodes() ]
+    # Initialize edges
+    for node in self.nodes():
+      self.add_edges_from(self.find_edges_of(node))
+
+
+
+  def get_candidate_neighbors(self, node):
+    x, y, n = node[0], node[1], self.nodes()
+    adjacent = [ x for x in [(x+1, y), (x-1, y), (x, y+1), (x, y-1)] if x in n ]
+    diagonal = [ x for x in [(x+1, y+1), (x-1, y-1), (x-1, y+1), (x+1, y-1)] if x in n ]
     return { 'adjacent': adjacent, 'diagonal': diagonal }
+
+  def find_edges_of(self, node):
+    candidates = self.get_candidate_neighbors(node)
+    edges = []
+    edges += [ x for x in candidates['adjacent'] if self.node[x]['value'] % 2 == 0 ]
+    edges += [ x for x in candidates['diagonal'] if self.node[x]['value'] % 2 == 1 ]
+    return [ (node, x) for x in edges ]
