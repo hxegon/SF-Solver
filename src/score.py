@@ -3,17 +3,16 @@ from functools import reduce
 class Score:
 
     def __init__(self, init_score):
-        self.total = None
-        self.string = []
+        self.total, self.string = None, []
         self.add(init_score)
 
-    def _combine(total, new):
-        if total is None or total == 0: # if first in the sequence
+    def _combine(prev, new):
+        if prev is None or prev == 0: # if first in the sequence
             return new
         elif new % 2 == 0: # if even
-            return total + new
+            return prev + new
         elif new % 2 == 1: # if odd
-            return total * new
+            return prev * new
 
     def _calculate_from(nums):
         return reduce(Score._combine, nums)
