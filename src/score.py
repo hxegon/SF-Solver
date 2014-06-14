@@ -14,7 +14,7 @@ class Score:
         elif new % 2 == 1: # if odd
             return prev * new
 
-    def _calculate_from(nums):
+    def _calculate_from(nums): # for internal use
         return reduce(Score._combine, nums)
 
     def add(self, new):

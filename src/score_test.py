@@ -9,6 +9,8 @@ class ScoreTest(unittest.TestCase):
     def testAddingWorks(self):
         self.score.add_from([5, 5, 4])
         self.assertEqual(self.score.total, 29)
+        self.score.add(3)
+        self.assertEqual(self.score.total, 87)
 
     def testKeepsTrackOfScoreString(self):
         self.score.add_from([1, 2, 3, 4, 5])
