@@ -1,2 +1,4 @@
 src/__pycache__
 src/scratch.txt
+.session.vim
+src/.session.vim
