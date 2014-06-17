@@ -12,5 +12,5 @@ class FinderTests(unittest.TestCase):
     
     def testFindsAPath(self):
         # should return a new path as long as there are any new paths
-        test = self.f.find_paths_from(0)
+        test = sorted(self.f.find_paths_from(0))
         self.assertEqual(test, [[0, 1, 3], [0, 1, 4], [0, 2]])
