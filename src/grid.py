@@ -30,7 +30,6 @@ class Grid(nx.DiGraph):
       self.add_edges_from(self.find_edges_of(node))
 
 
-
   def get_candidate_neighbors(self, node):
     x, y, n = node[0], node[1], self.nodes()
     adjacent = [ x for x in [(x+1, y), (x-1, y), (x, y+1), (x, y-1)] if x in n ]
