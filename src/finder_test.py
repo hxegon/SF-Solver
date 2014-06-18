@@ -21,3 +21,11 @@ class FinderTests(unittest.TestCase):
 
         test = sorted(self.f.find_paths_from(0))
         self.assertEqual(sorted(self.f.find_paths_from(0)), [[0, 1, 2]])
+
+    def testFindsAllPaths(self):
+        self.g.add_nodes_from([0, 1, 2, 3])
+        self.g.add_edges_from([(0, 1), (1, 0), (0, 2), (2, 3), (3, 1), (1, 2)])
+
+        self.assertEqual(sorted(self.f.find_all_paths()), sorted([
+            [0, 1, 2, 3], [0, 2, 3, 1], [1, 0, 2, 3],
+            [1, 2, 3], [2, 3, 1, 0], [3, 1, 2], [3, 1, 0, 2]]))

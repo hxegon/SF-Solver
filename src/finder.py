@@ -18,3 +18,9 @@ class Finder:
                     stack.append(path + [n])
             return recursive_search(stack, accumulator)
         return recursive_search([[start_point]], [])
+
+    def find_all_paths(self):
+        accumulator = [] # possibly not needed?
+        for n in self.graph.nodes():
+            accumulator += self.find_paths_from(n)
+        return accumulator
