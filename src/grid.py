@@ -43,3 +43,6 @@ class Grid(nx.DiGraph):
         edges += [ (this, x) for x in candidates['diagonal'] if self.node[x]['value'] % 2 == 1 ]
         return edges
 
+    def path_values(self, path):
+        return [ self.node[coord]['value'] for coord in path ]
+

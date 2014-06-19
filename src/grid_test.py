@@ -23,6 +23,17 @@ class NodeTests(unittest.TestCase):
         self.assertEqual(sorted(fixture['adjacent']), [(2,3), (3,2)])
         self.assertEqual(sorted(fixture['diagonal']), [(2,2)])
 
+class ValueTests(unittest.TestCase):
+
+    def setUp(self):
+        self.g = Grid([ i for i in range(0, 16) ])
+
+    def testAssignsValues(self):
+        self.assertEqual(self.g.node[(0,0)]['value'], 0)
+
+    def testPathValues(self):
+        self.assertEqual(self.g.path_values([(0, 1), (0, 2), (0, 3)]), [1, 2, 3])
+
 class EdgeTests(unittest.TestCase):
 
     def testMakesCorrectEdges(self):
