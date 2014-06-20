@@ -6,6 +6,7 @@ class InterfaceTests(unittest.TestCase):
     # No simple test that works for scores_for, but confidence is high that it works
 
     def testNewPuzzle(self):
+        # not a %100 guarantee of correctness
         for i in interface.new_puzzle():
             self.assertTrue(i in range(1, 10))
 
