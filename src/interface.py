@@ -12,5 +12,5 @@ def scores_for(puzzle):
 def new_puzzle():
     return [ random.choice(range(1, 10)) for i in range(0,16) ]
 
-def normalize(num_string):
-    pass
+def normalize_nums(num_string):
+    return [ int(i) for i in list(num_string) ]
