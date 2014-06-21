@@ -4,6 +4,7 @@ from finder import Finder
 import random
 
 def scores_for(puzzle):
+    puzzle = normalize_nums(puzzle)
     F = Finder(Grid(puzzle))
     return sorted([ (Score.calculate_from(F.graph.path_values(path)), path) for path in F.find_all_paths() ])
 
