@@ -17,6 +17,7 @@ class Grid(nx.DiGraph):
         super().__init__(self)
 
         # Initalize nodes
+        ## Should probably change to named tuples
         for x in range(0, self.SIZE[0]):
             for y in range(0, self.SIZE[1]):
                 self.add_node((x, y))
