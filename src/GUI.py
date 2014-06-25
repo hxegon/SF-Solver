@@ -18,11 +18,14 @@ class MainApplication(tk.Frame):
     def EnterPuzzle(self):
         puzzle = self.PuzzleEntryBox.get()
         if len(puzzle) == 16:
-            LabelText = str(scores_for(puzzle)[-1])
+            scores = scores_for(puzzle)[-1]
+            ScoreText = str(scores[-1][0])
+            PathText = str(scores[-1][1])
+            LabelText = "High Score: %s, Score Path: %s" % (ScoreText, PathText)
         else:
             LabelText = "Incorrect length. string was %s characters, when it needs to be 16 characters" % (len(puzzle))
-        PuzzleLabel = tk.Label(self.parent, text=LabelText)
-        PuzzleLabel.pack()
+        self.PuzzleLabel = tk.Label(self.parent, text=LabelText)
+        self.PuzzleLabel.pack()
 
 if __name__ == "__main__":
     root = tk.Tk()
