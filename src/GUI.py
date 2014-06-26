@@ -16,15 +16,16 @@ class MainApplication(tk.Frame):
         self.PuzzleEntryButton.pack()
 
 
-    def EnterPuzzle(self):
+    def EnterPuzzle(self, current_path=-1):
         puzzle = self.PuzzleEntryBox.get()
-        if len(puzzle) == 16:
-            scores = scores_for(puzzle)
-            ScoreText = str(scores[-1][0])
-            PathText = self.ShowPath(scores[-1][1])
-            LabelText = "High Score: %s, Score Path: %s" % (ScoreText, PathText)
-        else:
+        if len(puzzle) != 16:
             LabelText = "Incorrect length. string was %s characters, when it needs to be 16 characters" % (len(puzzle))
+        else:
+            self.scores = scores_for(puzzle) # for use in next/prev
+            self.current_path = current_path # for use in next/prev
+            ScoreText = str(self.scores[self.current_path][0])
+            PathText = self.ShowPath(self.scores[self.current_path][1])
+            LabelText = "High Score: %s, Score Path: %s" % (ScoreText, PathText)
         self.PuzzleLabel = tk.Label(self.parent, text=LabelText)
         self.PuzzleLabel.pack()
 
@@ -32,6 +33,8 @@ class MainApplication(tk.Frame):
     def ShowPath(self, path):
         coord_table = { 0: "A", 1: "B", 2: "C", 3: "D" }
         return " ".join([ coord_table[x] + str(y+1) for x, y in path ])
+
+    # TODO next/previous buttons
 
 
 if __name__ == "__main__":
