@@ -26,6 +26,15 @@ class MainApplication(tk.Frame):
             ScoreText = str(self.scores[self.current_path][0])
             PathText = self.ShowPath(self.scores[self.current_path][1])
             LabelText = "High Score: %s, Score Path: %s" % (ScoreText, PathText)
+            try:
+                self.HigherButton.pack_forget()
+                self.LowerButton.pack_forget()
+                self.PuzzleLabel.pack_forget()
+            except: pass
+            self.HigherButton = tk.Button(self.parent, text="Higher", command=self.HigherButtonAction)
+            self.HigherButton.pack()
+            self.LowerButton = tk.Button(self.parent, text="Lower", command=self.LowerButtonAction)
+            self.LowerButton.pack()
         self.PuzzleLabel = tk.Label(self.parent, text=LabelText)
         self.PuzzleLabel.pack()
 
@@ -34,8 +43,11 @@ class MainApplication(tk.Frame):
         coord_table = { 0: "A", 1: "B", 2: "C", 3: "D" }
         return " ".join([ coord_table[x] + str(y+1) for x, y in path ])
 
-    # TODO next/previous buttons
-
+    def LowerButtonAction(self):
+        self.EnterPuzzle(self.current_path - 1)
+    
+    def HigherButtonAction(self):
+        self.EnterPuzzle(self.current_path + 1)
 
 if __name__ == "__main__":
     root = tk.Tk()
