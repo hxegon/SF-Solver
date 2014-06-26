@@ -1,3 +1,4 @@
+#!/home/clebrun/.virtualenvs/Solver/bin/python3.3
 #import sys
 from interface import *
 import tkinter as tk
@@ -15,6 +16,12 @@ class MainApplication(tk.Frame):
         self.PuzzleEntryButton = tk.Button(self.parent, text="Enter Puzzle", command=self.EnterPuzzle)
         self.PuzzleEntryButton.pack()
 
+        self.RandomButton = tk.Button(self.parent, text="Random", command=self.Randomize)
+        self.RandomButton.pack()
+
+    def Randomize(self):
+        self.PuzzleEntryBox.delete(0, "end")
+        self.PuzzleEntryBox.insert(0, "".join([ str(i) for i in new_puzzle() ]))
 
     def EnterPuzzle(self, current_path=-1):
         puzzle = self.PuzzleEntryBox.get()
@@ -48,6 +55,7 @@ class MainApplication(tk.Frame):
     
     def HigherButtonAction(self):
         self.EnterPuzzle(self.current_path + 1)
+
 
 if __name__ == "__main__":
     root = tk.Tk()
