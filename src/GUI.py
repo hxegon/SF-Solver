@@ -31,7 +31,8 @@ class MainApplication(tk.Frame):
             self.current_path = current_path # for use in next/prev
             ScoreText = str(self.scores[self.current_path][0])
             PathText = self.ShowPath(self.scores[self.current_path][1])
-            LabelText = "High Score: %s, Score Path: %s" % (ScoreText, PathText)
+            CoordText = self.ShowCoordPath(self.scores[self.current_path][2])
+            LabelText = "High Score: %s, Score Path: %s, Path: %s" % (ScoreText, PathText, CoordText)
             try:
                 self.HigherButton.destroy()
                 self.LowerButton.destroy()
@@ -45,9 +46,13 @@ class MainApplication(tk.Frame):
         self.PuzzleLabel.pack()
 
     # changes a list of lists with (0,1) style grid coords to A2 style grid coords
-    def ShowPath(self, path):
+    def ShowCoordPath(self, path):
         coord_table = { 0: "A", 1: "B", 2: "C", 3: "D" }
         return " ".join([ coord_table[x] + str(y+1) for x, y in path ])
+
+    def ShowPath(self, path):
+        # show path values
+        return " ".join([ str(x) for x in path ])
 
     def LowerButtonAction(self):
         self.EnterPuzzle(self.current_path - 1)
@@ -55,8 +60,10 @@ class MainApplication(tk.Frame):
     def HigherButtonAction(self):
         self.EnterPuzzle(self.current_path + 1)
 
+def main():
+    root = tk.Tk()
+    MainApplication(root).pack(side="top", fill="both", expand=False)
+    root.mainloop()
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    MainApplication(root).pack(side="top", fill="both", expand=True)
-    root.mainloop()
+    main()
