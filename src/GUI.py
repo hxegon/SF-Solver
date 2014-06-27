@@ -33,9 +33,9 @@ class MainApplication(tk.Frame):
             PathText = self.ShowPath(self.scores[self.current_path][1])
             LabelText = "High Score: %s, Score Path: %s" % (ScoreText, PathText)
             try:
-                self.HigherButton.pack_forget()
-                self.LowerButton.pack_forget()
-                self.PuzzleLabel.pack_forget()
+                self.HigherButton.destroy()
+                self.LowerButton.destroy()
+                self.PuzzleLabel.destroy()
             except: pass
             self.HigherButton = tk.Button(self.parent, text="Higher", command=self.HigherButtonAction)
             self.HigherButton.pack()
