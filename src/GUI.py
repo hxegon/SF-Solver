@@ -1,4 +1,3 @@
-#!/home/clebrun/.virtualenvs/Solver/bin/python3.3
 #import sys
 from interface import *
 import tkinter as tk
