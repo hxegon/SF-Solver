@@ -6,7 +6,7 @@ import random
 def scores_for(puzzle):
     puzzle = normalize_nums(puzzle)
     F = Finder(Grid(puzzle))
-    return sorted([ (Score.calculate_from(F.graph.path_values(path)), path) for path in F.find_all_paths() ])
+    return sorted([(x, F.graph.path_values(y), y) for x, y in [ (Score.calculate_from(F.graph.path_values(path)), path) for path in F.find_all_paths() ] ])
 
 def new_puzzle():
     return [ random.choice(range(1, 10)) for i in range(0,16) ]
