@@ -36,11 +36,11 @@ class MainApplication(tk.Frame):
                 self.LowerButton.destroy()
                 self.PuzzleLabel.destroy()
             except: pass
-            self.HigherButton = tk.Button(self.parent, text="Higher", command=self.HigherButtonAction)
+            self.HigherButton = tk.Button(self.parent, text="Higher", command=self.HigherButtonAction, font=('', 16))
             self.HigherButton.pack()
-            self.LowerButton = tk.Button(self.parent, text="Lower", command=self.LowerButtonAction)
+            self.LowerButton = tk.Button(self.parent, text="Lower", command=self.LowerButtonAction, font=('', 16))
             self.LowerButton.pack()
-        self.PuzzleLabel = tk.Label(self.parent, text=LabelText)
+        self.PuzzleLabel = tk.Label(self.parent, text=LabelText, font=("", 16))
         self.PuzzleLabel.pack()
 
     # changes a list of lists with (0,1) style grid coords to A2 style grid coords
