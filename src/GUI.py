@@ -1,21 +1,20 @@
 #import sys
 from interface import *
 import tkinter as tk
-
 class MainApplication(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
-        self.PuzzleEntryLabel = tk.Label(self.parent, text="Enter Puzzle Numbers Here")
+        self.PuzzleEntryLabel = tk.Label(self.parent, text="Enter Puzzle Numbers Here", font=("", 16))
         self.PuzzleEntryLabel.pack()
         
-        self.PuzzleEntryBox = tk.Entry(self.parent, textvariable="NewPuzzle")
+        self.PuzzleEntryBox = tk.Entry(self.parent, textvariable="NewPuzzle", font=('', 16))
         self.PuzzleEntryBox.pack()
 
-        self.PuzzleEntryButton = tk.Button(self.parent, text="Enter Puzzle", command=self.EnterPuzzle)
+        self.PuzzleEntryButton = tk.Button(self.parent, text="Enter Puzzle", command=self.EnterPuzzle, font=('', 16))
         self.PuzzleEntryButton.pack()
 
-        self.RandomButton = tk.Button(self.parent, text="Random", command=self.Randomize)
+        self.RandomButton = tk.Button(self.parent, text="Random", command=self.Randomize, font=('', 16))
         self.RandomButton.pack()
 
     def Randomize(self):
