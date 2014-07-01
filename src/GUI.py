@@ -33,7 +33,7 @@ class MainApplication(tk.Frame):
             ScoreText = self.ScoreWithCommas(self.scores[self.current_path][0])
             PathText = self.ShowPath(self.scores[self.current_path][1])
             CoordText = self.ShowCoordPath(self.scores[self.current_path][2])
-            LabelText = "High Score: %s, Score Path: %s, Path: %s" % (ScoreText, PathText, CoordText)
+            LabelText = "High Score: %s\n Score Path: %s\n Path: %s" % (ScoreText, PathText, CoordText)
             try:
                 self.HigherButton.destroy()
                 self.LowerButton.destroy()
