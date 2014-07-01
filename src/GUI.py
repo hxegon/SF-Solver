@@ -1,4 +1,3 @@
-#import sys
 from interface import *
 import tkinter as tk
 class MainApplication(tk.Frame):
