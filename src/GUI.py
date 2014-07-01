@@ -1,9 +1,12 @@
 from interface import *
 import tkinter as tk
+import locale
+
 class MainApplication(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+        locale.setlocale(locale.LC_ALL, 'en_US')
         self.PuzzleEntryLabel = tk.Label(self.parent, text="Enter Puzzle Numbers Here", font=("", 16))
         self.PuzzleEntryLabel.pack()
         
@@ -27,7 +30,7 @@ class MainApplication(tk.Frame):
         else:
             self.scores = scores_for(puzzle) # for use in next/prev
             self.current_path = current_path # for use in next/prev
-            ScoreText = str(self.scores[self.current_path][0])
+            ScoreText = self.ScoreWithCommas(self.scores[self.current_path][0])
             PathText = self.ShowPath(self.scores[self.current_path][1])
             CoordText = self.ShowCoordPath(self.scores[self.current_path][2])
             LabelText = "High Score: %s, Score Path: %s, Path: %s" % (ScoreText, PathText, CoordText)
@@ -42,6 +45,9 @@ class MainApplication(tk.Frame):
             self.LowerButton.pack()
         self.PuzzleLabel = tk.Label(self.parent, text=LabelText, font=("", 16))
         self.PuzzleLabel.pack()
+
+    def ScoreWithCommas(self, score):
+        return locale.format("%d", score, grouping=True)
 
     # changes a list of lists with (0,1) style grid coords to A2 style grid coords
     def ShowCoordPath(self, path):
